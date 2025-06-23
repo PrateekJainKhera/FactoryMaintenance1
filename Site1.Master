@@ -1,0 +1,139 @@
+﻿<%@ Master Language="VB" AutoEventWireup="false" CodeBehind="Site1.master.vb" Inherits="FactoryMaintenance1.Site1" %>
+
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <title>Food Factory Management System</title>
+    
+    <!-- DevExpress CDN -->
+    <link rel="stylesheet" type="text/css" href="https://cdn3.devexpress.com/jslib/23.2.3/css/dx.light.css" />
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn3.devexpress.com/jslib/23.2.3/js/dx.all.js"></script>
+
+    <style>
+        body {
+            font-family: 'Segoe UI', 'Helvetica Neue', 'Droid Sans', 'Arial', 'sans-serif';
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        .header {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+            .header h1 {
+                margin: 0;
+                font-size: 24px;
+            }
+
+        .nav {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            background-color: #333;
+        }
+
+            .nav li {
+                display: inline-block;
+            }
+
+                .nav li a {
+                    display: block;
+                    color: white;
+                    text-align: center;
+                    padding: 14px 16px;
+                    text-decoration: none;
+                }
+
+                    .nav li a:hover {
+                        background-color: #111;
+                    }
+
+                .nav li.dropdown { display: inline-block; }
+    
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+            .dropdown-content a {
+                color: black !important;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+                text-align: left;
+            }
+
+                .dropdown-content a:hover {
+                    background-color: #333; /* Dark background on hover */
+                    color: white !important;
+                }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .main-content {
+            padding: 20px;
+        }
+
+        .user-info {
+            font-size: 14px;
+        }
+    </style>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="header">
+            <h1>Factory Maintenance</h1>
+            <div class="user-info">
+                <asp:Label ID="lblUser" runat="server" Text=""></asp:Label>
+                <asp:LinkButton ID="lnkLogout" runat="server" OnClick="lnkLogout_Click" ForeColor="White" style="margin-left: 15px;">Logout</asp:LinkButton>
+            </div>
+        </div>
+        
+        <ul class="nav">
+            <li><a href="Dashboard.aspx">Dashboard</a></li>
+            <li><a href="Insights.aspx">Insights & Reports</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn">Maintenance Tickets ▼</a>
+                <div class="dropdown-content">
+                    <a href="CreateTicket.aspx">Create New Ticket</a>
+                    <a href="ViewAllTickets.aspx">View All Tickets</a>
+                    <a href="MyTickets.aspx">My Assigned Tickets</a>
+                    <a href="SchedulePlanner.aspx">Schedule Planner</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn">Management ▼</a>
+                <div class="dropdown-content">
+                    <a href="Machines.aspx">Manage Machines</a>
+                    <a href="Inventory.aspx">Manage Inventory</a>
+                    <a href="Suppliers.aspx">Manage Suppliers</a>
+                    <a href="Technicians.aspx">Manage Technicians</a>
+                    <a href="ExternalEngineers.aspx">Manage External Engineers</a>
+                    <a href="ManageChecklists.aspx">Manage Checklists</a>
+                </div>
+            </li>
+        </ul>
+
+        <div class="main-content">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>
